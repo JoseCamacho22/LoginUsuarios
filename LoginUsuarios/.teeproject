@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Default Connection</comment>
+<entry key="uuid">f8b189a1-b5f8-4adc-8662-a056835a5834</entry>
+<entry key="useCustomConnectionString">false</entry>
+<entry key="port">3306</entry>
+<entry key="color">123 123 123</entry>
+<entry key="autoCommit">true</entry>
+<entry key="toadext.dbPlatform">ORACLE</entry>
+<entry key="sshEnabled">false</entry>
+<entry key="adapterId">MYSQL</entry>
+<entry key="customJdbcConnectString">jdbc:mysql://localhost:3306</entry>
+<entry key="displayName">root@localhost</entry>
+<entry key="userName">root</entry>
+<entry key="sshPassword">juFgKso25IA=</entry>
+<entry key="sslEnabled">false</entry>
+<entry key="last_connected">1463918372007</entry>
+<entry key="restore_state">true</entry>
+<entry key="host">localhost</entry>
+<entry key="forceRestore">true</entry>
+</properties>
