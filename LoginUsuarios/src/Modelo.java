@@ -1,14 +1,24 @@
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Properties;
 
 import javax.swing.JOptionPane;
 
 public class Modelo {
-
+	final String password="jose";
+	final String url="jdbc:mysql://localhost/LoginUsuarios";
+	final String usuario ="jose";
+	
 	// Realizamos la conexion a la base de datos llamada LoginUsuarios
 
 	private Connection conexion = null;
@@ -16,15 +26,16 @@ public class Modelo {
 	// Indicamos el metodo para la conexion
 
 	public void conexionBBDD() {
-		String basedatos = "LoginUsuarios";
-		String url = "jdbc:mysql://localhost/" + basedatos;
+		
+		//String basedatos = "LoginUsuarios";
+		//String url = "jdbc:mysql://localhost/" + basedatos;
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conexion = DriverManager.getConnection(url, "root", "");
+			conexion = DriverManager.getConnection(url,password,usuario);
 			if (conexion != null) {
-				System.out
-						.println(" Su conexion a la base de datos " + url + " con Mysql a sido establecida con exito");
+				//System.out
+					//.println(" Su conexion a la base de datos " + url + " con Mysql a sido establecida con exito");
 			}
 		} catch (ClassNotFoundException e) {
 			System.out.println(" Driver JDBC  no ha sido encontrado ");
@@ -39,7 +50,7 @@ public class Modelo {
 		}
 	}
 	
-
+	
 	// Creamos el metodo, para comparar el Usuario y la clave son correctas
 
 	public ResultSet ConsultaLogin(String nombre, String clave) {
@@ -126,6 +137,7 @@ public class Modelo {
 	// metodo `para eliminar los usuarios que hay en la tabla
 	public void Delete(String nombre) {
 		this.conexionBBDD();
+		//this.arrancarINI();
 		PreparedStatement pstmt = null;
 		try {
 			pstmt = conexion.prepareStatement("DELETE FROM Usuarios WHERE Nombre= ?");
@@ -156,6 +168,66 @@ public class Modelo {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+	
+	
+public void EscribirINI() {
+		Properties propiedades = new Properties();
+		OutputStream salida = null;
+		try {
+			File miFichero = new File("configuracion.ini");
+			if (miFichero.exists()) {
+				salida = new FileOutputStream(miFichero);
+				// asignamos los valores a las propiedades
+				propiedades.setProperty("url",url);
+				propiedades.setProperty("password",password);
+				propiedades.setProperty("usuario",usuario);
+
+				// guardamos el archivo de propiedades en la carpeta de
+
+				// aplicación
+				propiedades.store(salida, "Comentario para el fichero");
+			} else
+				System.err.println("Fichero no encontrado");
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		} finally {
+			if (salida != null) {
+				try {
+					salida.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
+			}
+		}
+}
+
+	public void LeerINI() {
+		Properties propiedades = new Properties();
+		InputStream entrada = null;
+		try {
+			File miFichero = new File("configuracion.ini");
+			if (miFichero.exists()) {
+				entrada = new FileInputStream(miFichero);
+				propiedades.load(entrada);
+				System.out.println(propiedades.getProperty("url"));
+				System.out.println(propiedades.getProperty("password"));
+				System.out.println(propiedades.getProperty("usuario"));
+				System.out.println("Su conexion se a establecido con exito :");
+			} else
+				System.err.println("Fichero no encontrado");
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		} finally {
+			if (entrada != null) {
+				try {
+					entrada.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 }
