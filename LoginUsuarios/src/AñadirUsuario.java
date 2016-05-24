@@ -31,6 +31,7 @@ public class AñadirUsuario extends JFrame {
 	private JTextField textField_5;
 	private TablaDatos tabladatos;
 	Modelo modelo = new Modelo();
+	private JButton btnNewButton;
 	
 
 	
@@ -129,6 +130,17 @@ public class AñadirUsuario extends JFrame {
 		textField_5 = new JTextField();
 		textField_5.setColumns(10);
 		
+		btnNewButton = new JButton("VOLVER");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+					TablaDatos tabaladatos= new TablaDatos();
+					setVisible(false);
+					tabaladatos.setVisible(true);
+				}
+				
+			
+		});
+		
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
@@ -150,11 +162,13 @@ public class AñadirUsuario extends JFrame {
 						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(66, Short.MAX_VALUE))
+					.addContainerGap(126, Short.MAX_VALUE))
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(115, Short.MAX_VALUE)
-					.addComponent(btnNewButton1, GroupLayout.PREFERRED_SIZE, 258, GroupLayout.PREFERRED_SIZE)
-					.addGap(67))
+					.addContainerGap(132, Short.MAX_VALUE)
+					.addComponent(btnNewButton1, GroupLayout.PREFERRED_SIZE, 219, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -183,8 +197,10 @@ public class AñadirUsuario extends JFrame {
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNewLabel_5)
 						.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-					.addComponent(btnNewButton1, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnNewButton)
+						.addComponent(btnNewButton1, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
 		contentPane.setLayout(gl_contentPane);

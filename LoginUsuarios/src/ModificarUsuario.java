@@ -151,6 +151,16 @@ public class ModificarUsuario extends JFrame {
 		txtDam.setBackground(new Color(153, 255, 153));
 		txtDam.setColumns(10);
 		
+		JButton btnVolver = new JButton("VOLVER");
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TablaDatos tabaladatos= new TablaDatos();
+				setVisible(false);
+				tabaladatos.setVisible(true);
+			}
+			
+		});
+		
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
@@ -179,19 +189,20 @@ public class ModificarUsuario extends JFrame {
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addComponent(textField_Pais, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 									.addGap(12)
-									.addComponent(lblNewLabel_Clave, GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+									.addComponent(lblNewLabel_Clave, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(txtDam, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
 									.addGap(38))
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addComponent(textField_Sexo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, 142, Short.MAX_VALUE))
+									.addPreferredGap(ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+									.addComponent(btnVolver))
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addComponent(textField_Nombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, 142, Short.MAX_VALUE))))
+									.addPreferredGap(ComponentPlacement.RELATED, 135, Short.MAX_VALUE))))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)))
+							.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)))
 					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
@@ -228,8 +239,9 @@ public class ModificarUsuario extends JFrame {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblSexo)
-						.addComponent(textField_Sexo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(0, Short.MAX_VALUE))
+						.addComponent(textField_Sexo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnVolver))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
 		

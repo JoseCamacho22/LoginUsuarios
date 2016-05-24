@@ -28,6 +28,7 @@ public class EliminarUsuario extends JFrame {
 	private JPanel contentPane;
 	 JTable Table;
 	 private JTextField textField_Nombre;
+	 private JButton btnNewButton;
 	
 
 	/**
@@ -82,12 +83,23 @@ public class EliminarUsuario extends JFrame {
 		
 		textField_Nombre = new JTextField();
 		textField_Nombre.setColumns(10);
+		
+		btnNewButton = new JButton("VOLVER");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+					TablaDatos tabaladatos= new TablaDatos();
+					setVisible(false);
+					tabaladatos.setVisible(true);
+				}
+				
+			
+		});
 	
 		
 	
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE))
@@ -95,14 +107,16 @@ public class EliminarUsuario extends JFrame {
 					.addGap(31)
 					.addComponent(lblIndiqueElNombre)
 					.addContainerGap(55, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap(151, Short.MAX_VALUE)
 					.addComponent(textField_Nombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addGap(155))
-				.addGroup(gl_contentPane.createSequentialGroup()
+				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
 					.addGap(168)
 					.addComponent(btnEliminar)
-					.addContainerGap(168, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -112,10 +126,15 @@ public class EliminarUsuario extends JFrame {
 					.addGap(33)
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(textField_Nombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-					.addComponent(btnEliminar)
-					.addGap(17))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(textField_Nombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+							.addComponent(btnEliminar)
+							.addGap(17))
+						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+							.addComponent(btnNewButton)
+							.addContainerGap())))
 		);
 		contentPane.setLayout(gl_contentPane);
 		
